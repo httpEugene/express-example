@@ -27,12 +27,14 @@ pwd'''
       steps {
         parallel(
           "Service1": {
-            sh '''pwd
+            sh '''cd service1
+pwd
 npm install'''
             
           },
           "Service2": {
-            sh '''pwd
+            sh '''cd service2
+pwd
 npm install'''
             
           }
@@ -43,11 +45,13 @@ npm install'''
       steps {
         parallel(
           "Service1": {
-            sh 'npm test-unit'
+            sh '''cd service1
+npm test-unit'''
             
           },
           "Service2": {
-            sh 'npm test-unit'
+            sh '''cd service2
+npm test-unit'''
             
           }
         )
