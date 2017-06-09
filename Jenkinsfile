@@ -46,12 +46,12 @@ npm install'''
         parallel(
           "Service1": {
             sh '''cd express-example
-npm test-unit'''
+npm run test-unit'''
             
           },
           "Service2": {
             sh '''cd express-service
-npm test-unit'''
+npm run test-unit'''
             
           }
         )
