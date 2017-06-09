@@ -6,18 +6,18 @@ pipeline {
         parallel(
           "Service1": {
             sh '''pwd
-mkdir service1
-cd service1
-pwd'''
-            git(url: 'https://github.com/httpEugene/express-example.git', branch: 'master')
+git clone https://github.com/httpEugene/express-example.git
+cd express-example
+pwd
+
+'''
             
           },
           "Service2": {
             sh '''pwd
-mkdir service2
-cd service2
+git clone https://github.com/httpEugene/express-service.git
+cd express-service
 pwd'''
-            git(url: 'https://github.com/httpEugene/express-service.git', branch: 'master')
             
           }
         )
@@ -27,13 +27,13 @@ pwd'''
       steps {
         parallel(
           "Service1": {
-            sh '''cd service1
+            sh '''cd express-example
 pwd
 npm install'''
             
           },
           "Service2": {
-            sh '''cd service2
+            sh '''cd express-service
 pwd
 npm install'''
             
@@ -45,12 +45,12 @@ npm install'''
       steps {
         parallel(
           "Service1": {
-            sh '''cd service1
+            sh '''cd express-example
 npm test-unit'''
             
           },
           "Service2": {
-            sh '''cd service2
+            sh '''cd express-service
 npm test-unit'''
             
           }
