@@ -17,19 +17,19 @@ git clone https://github.com/httpEugene/express-service3.git'''
           "Service1": {
             sh '''cd express-example
 pwd
-yarn'''
+yarn --mutex /var/lib/jenkins/workspace/.yarn-mutex'''
             
           },
           "Service2": {
             sh '''cd express-service
 pwd
-yarn'''
+yarn --mutex /var/lib/jenkins/workspace/.yarn-mutex'''
             
           },
           "Service3": {
             sh '''cd express-service3
 pwd
-yarn'''
+yarn --mutex /var/lib/jenkins/workspace/.yarn-mutex'''
             
           }
         )
