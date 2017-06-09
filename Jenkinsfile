@@ -7,14 +7,16 @@ pipeline {
           "Service1": {
             sh '''pwd
 mkdir service1
-cd service1'''
+cd service1
+pwd'''
             git(url: 'https://github.com/httpEugene/express-example.git', branch: 'master')
             
           },
           "Service2": {
             sh '''pwd
 mkdir service2
-cd service2'''
+cd service2
+pwd'''
             git(url: 'https://github.com/httpEugene/express-service.git', branch: 'master')
             
           }
