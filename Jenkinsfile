@@ -7,7 +7,8 @@ pipeline {
 git clone https://github.com/httpEugene/express-example.git
 pwd
 git clone https://github.com/httpEugene/express-service.git
-'''
+pwd
+git clone https://github.com/httpEugene/express-service3.git'''
       }
     }
     stage('Build') {
@@ -21,6 +22,12 @@ npm install'''
           },
           "Service2": {
             sh '''cd express-service
+pwd
+npm install'''
+            
+          },
+          "Service3": {
+            sh '''cd express-service3
 pwd
 npm install'''
             
@@ -40,6 +47,11 @@ npm run test-unit'''
             sh '''cd express-service
 npm run test-unit'''
             
+          },
+          "Service3": {
+            sh '''cd express-service3
+npm run test-unit'''
+            
           }
         )
       }
@@ -54,6 +66,11 @@ npm run test-unit'''
           },
           "Service2": {
             sh '''cd express-service
+npm run test-unit'''
+            
+          },
+          "Service3": {
+            sh '''cd express-service3
 npm run test-unit'''
             
           }
@@ -80,6 +97,15 @@ npm run test-unit'''
           "QualityCheck:S2": {
             sh 'echo \'working on quality S2\''
             
+          },
+          "Test:S3": {
+            sh '''cd express-service3
+npm run test-unit'''
+            
+          },
+          "QualityCheck:S3": {
+            sh 'echo \'working on quality S3\''
+            
           }
         )
       }
@@ -87,8 +113,6 @@ npm run test-unit'''
     stage('Integration Tests') {
       steps {
         sh '''cd express-example
-npm run test-integration
-cd ../express-service
 npm run test-integration'''
       }
     }
