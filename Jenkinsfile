@@ -17,19 +17,19 @@ git clone https://github.com/httpEugene/express-service3.git'''
           "Service1": {
             sh '''cd express-example
 pwd
-npm install'''
+yarn'''
             
           },
           "Service2": {
             sh '''cd express-service
 pwd
-npm install'''
+yarn'''
             
           },
           "Service3": {
             sh '''cd express-service3
 pwd
-npm install'''
+yarn'''
             
           }
         )
