@@ -5,10 +5,12 @@ pipeline {
       steps {
         parallel(
           "Service1": {
+            sh 'pwd'
             git(url: 'https://github.com/httpEugene/express-example.git', branch: 'master')
             
           },
           "Service2": {
+            sh 'pwd'
             git(url: 'https://github.com/httpEugene/express-service.git', branch: 'master')
             
           }
@@ -19,11 +21,13 @@ pipeline {
       steps {
         parallel(
           "Service1": {
-            sh 'npm install'
+            sh '''pwd
+npm install'''
             
           },
           "Service2": {
-            sh 'npm install'
+            sh '''pwd
+npm install'''
             
           }
         )
