@@ -40,17 +40,17 @@ yarn install --mutex file:/var/lib/jenkins/workspace/.yarn-mutex'''
         parallel(
           "Service1": {
             sh '''cd express-example
-npm run test-unit'''
+docker build -t service1 .'''
             
           },
           "Service2": {
             sh '''cd express-service
-npm run test-unit'''
+docker build -t service2 .'''
             
           },
           "Service3": {
             sh '''cd express-service3
-npm run test-unit'''
+docker build -t service3 .'''
             
           }
         )
@@ -61,17 +61,17 @@ npm run test-unit'''
         parallel(
           "Service1": {
             sh '''cd express-example
-npm run test-unit'''
+docker run -p 3000:3000 -d service1'''
             
           },
           "Service2": {
             sh '''cd express-service
-npm run test-unit'''
+docker run -p 3001:3000 -d service2'''
             
           },
           "Service3": {
             sh '''cd express-service3
-npm run test-unit'''
+docker run -p 3002:3000 -d service3'''
             
           }
         )
@@ -118,7 +118,7 @@ npm run test-integration'''
     }
     stage('Cleanup') {
       steps {
-        cleanWs(cleanWhenAborted: true, cleanWhenNotBuilt: true, cleanWhenFailure: true, cleanWhenSuccess: true, cleanWhenUnstable: true, cleanupMatrixParent: true, deleteDirs: true)
+        sh 'echo \'cleanup\''
       }
     }
   }
