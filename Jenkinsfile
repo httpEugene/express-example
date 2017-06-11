@@ -67,12 +67,12 @@ docker run -p 3000:3000 -d service1'''
           },
           "Service2": {
             sh '''cd express-service
-docker run -p 3001:3000 -d service2'''
+docker run -p 3001:3001 -d service2'''
             
           },
           "Service3": {
             sh '''cd express-service3
-docker run -p 3002:3000 -d service3'''
+docker run -p 3002:3002 -d service3'''
             
           }
         )
