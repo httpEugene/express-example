@@ -4,6 +4,7 @@ pipeline {
     stage('Git') {
       steps {
         sh '''pwd
+groups $USER
 git clone https://github.com/httpEugene/express-example.git
 pwd
 git clone https://github.com/httpEugene/express-service.git
